@@ -26,8 +26,8 @@
     "webpack",
     "jest",
     "src/setupTests.ts",
-    "src/firebase.conf.js",
-    "src/default_firebase.conf.js",
+    "src/firebase.conf",
+    "src/default_firebase.conf",
     "src/index.tsx"
   ]
 }
