@@ -2,7 +2,7 @@
 #  Pandaton Mood Board Publish Gherkin Tests  #
 ###############################################
 
-# Here are the tests related to the PublishService using PublishRequest method (later report service also)
+# Here are the tests related to the PublishService using PublishRequest method
 
 # User wishes to publish his 'mood', after login authorId gets a valid UserId
 Scenario: a user login with email, he gets a valid UserId
