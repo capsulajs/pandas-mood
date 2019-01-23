@@ -1,0 +1,11 @@
+.MoodItem img {
+  width: 100px;
+}
+
+.MoodItem {
+  display: inline-block;
+}
+
+.MoodItem.selected {
+    border: 1px solid black;
+}
