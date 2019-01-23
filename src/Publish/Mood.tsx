@@ -29,11 +29,11 @@ class Mood extends React.Component<MoodProps, MoodState> {
   public render() {
     return (
       <div className="Mood">
-        <MoodItem selected={this.state.selectedMood === 0} icon={mood0} select={this.selectMood(0)}/>
-        <MoodItem selected={this.state.selectedMood === 1} icon={mood1} select={this.selectMood(1)}/>
-        <MoodItem selected={this.state.selectedMood === 2} icon={mood2} select={this.selectMood(2)}/>
-        <MoodItem selected={this.state.selectedMood === 3} icon={mood3} select={this.selectMood(3)}/>
-        <MoodItem selected={this.state.selectedMood === 4} icon={mood4} select={this.selectMood(4)}/>
+        <MoodItem selected={this.state.selectedMood === 0} icon={mood0} color="red" select={this.selectMood(0)}/>
+        <MoodItem selected={this.state.selectedMood === 1} icon={mood1} color="orange" select={this.selectMood(1)}/>
+        <MoodItem selected={this.state.selectedMood === 2} icon={mood2} color="blue" select={this.selectMood(2)}/>
+        <MoodItem selected={this.state.selectedMood === 3} icon={mood3} color="pink" select={this.selectMood(3)}/>
+        <MoodItem selected={this.state.selectedMood === 4} icon={mood4} color="green" select={this.selectMood(4)}/>
       </div>
     );
   }

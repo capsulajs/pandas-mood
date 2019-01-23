@@ -4,6 +4,7 @@ import { Mood as MoodType } from '../services/api/Mood';
 
 interface MoodItemProps {
   selected: boolean;
+  color: string;
   icon: any;
   select: () => void;
 }
@@ -14,10 +15,10 @@ interface MoodItemState {
 
 class MoodItem extends React.Component<MoodItemProps, MoodItemState> {
   public render() {
-    const { icon, select, selected } = this.props;
+    const { select, selected, color } = this.props;
     return (
-      <div className={`MoodItem ${selected ? 'selected' : '' }`} onClick={select}>
-        <img src={icon} alt="Mood icon" />
+      <div className={`MoodItem ${selected ? 'selected' : '' }`} style={{ backgroundColor: color }} onClick={select}>
+        {/*<img src={icon} alt="Mood icon" />*/}
       </div>
     );
   }
