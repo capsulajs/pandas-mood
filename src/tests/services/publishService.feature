@@ -56,7 +56,26 @@ Scenario: user is using an unwritten before hashtag in his 'mood' publishing
   And     message contains a new hashtag
   Then    hashtag will be sent to DB
 
-# User wishes to publish his 'mood', user mentions another relatedUsers and use a valid UserId
+# User wishes to publish his 'mood', user mentions another user from relatedUsers and use a valid UserId
+Scenario: user mentions another registered user
+  Given   PublishService with PublishRequest method
+  And     user login successfully
+  When    user mentions another user in his message
+  And     mentioned user is in relatedUsers list of names
+  Then    mentioned user will be sent to DB
 
+# User wishes to publish his 'mood', user mentions other userS from relatedUsers and use a valid UserId
+Scenario: user mentions other registered users
+Given   PublishService with PublishRequest method
+And     user login successfully
+When    user mentions other users in his message
+And     mentioned users are in relatedUsers list of names
+Then    mentioned users will be sent to DB
 
 # User wishes to publish his 'mood', user mentions another relatedUsers and use a non-existent UserId
+Scenario: user mentions another registered user
+  Given   PublishService with PublishRequest method
+  And     user login successfully
+  When    user mentions another user in his message
+  And     mentioned user is not in relatedUsers list of names
+  Then    an error message will be received
