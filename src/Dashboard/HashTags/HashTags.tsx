@@ -1,7 +1,8 @@
 import * as React from 'react';
 import './HashTags.css';
-import TagCloud from 'react-tag-cloud';
-import randomColor from 'randomcolor';
+
+const TagCloud = require('react-tag-cloud');
+const randomColor = require('randomcolor');
 
 class HashTags extends React.Component {
     public render() {
