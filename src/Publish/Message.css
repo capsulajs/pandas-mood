@@ -1,2 +1,6 @@
 .Message {
 }
+
+.Message textarea {
+    height: 4em;
+}
