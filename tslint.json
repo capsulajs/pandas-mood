@@ -18,7 +18,9 @@
     "exclude": [
       "config/**/*.js",
       "node_modules/**/*.ts",
-      "coverage/lcov-report/*.js"
+      "coverage/lcov-report/*.js",
+      "firebase.conf.js",
+      "default_firebase.conf.js"
     ]
   }
 }
