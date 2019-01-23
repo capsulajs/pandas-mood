@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@types/chart.js": "^2.7.42",
     "chart.js": "^2.7.3",
     "randomcolor": "^0.5.3",
     "react": "^16.7.0",
