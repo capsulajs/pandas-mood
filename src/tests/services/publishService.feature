@@ -1,6 +1,6 @@
-###############################################
-#  Pandaton Mood Board Publish Gherkin Tests  #
-###############################################
+#######################################################
+#  Pandaton Mood Board Publish Service Gherkin Tests  #
+#######################################################
 
 # Here are the tests related to the PublishService using PublishRequest method
 
