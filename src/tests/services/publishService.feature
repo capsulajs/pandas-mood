@@ -49,7 +49,12 @@ Scenario: user writes a message for publishing
   Then    message content will be sent to DB
 
 # User wishes to publish his 'mood', user uses NEW Hashtag, Hashtag is recorded for future use
-
+Scenario: user is using an unwritten before hashtag in his 'mood' publishing
+  Given   PublishService with PublishRequest method
+  And     user login successfully
+  When    user sends a message for publishing
+  And     message contains a new hashtag
+  Then    hashtag will be sent to DB
 
 # User wishes to publish his 'mood', user mentions another relatedUsers and use a valid UserId
 
