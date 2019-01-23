@@ -1,4 +1,5 @@
 import PublishServiceDefinition, { PublishRequest, PublishResponse } from '../api/PublishService'; // tslint:disable-line
+import { scalecube } from '../../scalecube/src/index';
 
 
 export class PublishService implements PublishServiceDefinition {
@@ -13,3 +14,8 @@ export class PublishService implements PublishServiceDefinition {
     return Promise.resolve({})
   }
 }
+
+scalecube
+    .builder()
+    .services(new PublishService())
+    .build();
