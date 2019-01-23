@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { Post } from './Post';
 
 export interface ReportService {
