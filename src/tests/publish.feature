@@ -46,7 +46,7 @@ Scenario: The suggestion dropdown appears while typing a relatedUser
     When  I start typing a relatedUser
     Then  A full list of existing suggestions is displaying below
 
-Scenario: Check the style of a hash-tag 
+Scenario: Check the style of a hash-tag
     Given Input page
     And   I am login
     And   I am on message field
