@@ -13,4 +13,3 @@ interface PublishRequest  {
 }
 
 interface PublishResponse {}
-
