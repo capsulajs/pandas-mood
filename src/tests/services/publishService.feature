@@ -20,7 +20,7 @@ Scenario: a user login with email, he gets the correct UserId
   And     UserId is the correct Id
 
 # User wishes to publish his 'mood', after login authorId gets a non-existent UserId
-Scenario: user tries to publish his 'mood' when getting a non-existent UserId
+Scenario: user login and receive a non-existent UserId
   Given   PublishService with PublishRequest method
   When    user login successfully
   And     user receives a non-existent UserId
@@ -39,11 +39,14 @@ Scenario: user enters a 'mood' argument from the prepared list of moods
   |2          |
   |3          |
   |4          |
-  Then    chosen 'mood' will be written to the message
-  And     chosen mood will be written to DB
+  Then    chosen mood will be sent to DB
 
 # User wishes to publish his 'mood', user writes a message (optional)
-
+Scenario: user writes a message for publishing
+  Given   PublishService with PublishRequest method
+  And     user login successfully
+  When    user sends a message for publishing
+  Then    message content will be sent to DB
 
 # User wishes to publish his 'mood', user uses NEW Hashtag, Hashtag is recorded for future use
 
