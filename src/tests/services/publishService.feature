@@ -66,11 +66,11 @@ Scenario: user mentions another registered user
 
 # User wishes to publish his 'mood', user mentions other userS from relatedUsers and use a valid UserId
 Scenario: user mentions other registered users
-Given   PublishService with PublishRequest method
-And     user login successfully
-When    user mentions other users in his message
-And     mentioned users are in relatedUsers list of names
-Then    mentioned users will be sent to DB
+  Given   PublishService with PublishRequest method
+  And     user login successfully
+  When    user mentions other users in his message
+  And     mentioned users are in relatedUsers list of names
+  Then    mentioned users will be sent to DB
 
 # User wishes to publish his 'mood', user mentions another relatedUsers and use a non-existent UserId
 Scenario: user mentions another registered user
