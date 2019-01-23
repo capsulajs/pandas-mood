@@ -22,10 +22,10 @@ class App extends React.Component {
           <Link to="/dashboard">Dashboard</Link>
         </header>
         <div className="Content">
-          <Route path="/" component={Home}/>
-          <Route path="/login" component={Login}/>
-          <Route path="/publish" component={Publish}/>
-          <Route path="/dashboard" component={Dashboard}/>
+            <Route exact={true} path="/" component={Home}/>
+            <Route path="/login" component={Login}/>
+            <Route path="/publish" component={Publish}/>
+            <Route path="/dashboard" component={Dashboard}/>
         </div>
       </div>
     </Router>;
