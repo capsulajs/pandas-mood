@@ -1,4 +1,4 @@
-
+// tslint disable
 // Initialize Firebase
 export const config = {
   apiKey: "<API_KEY>",
