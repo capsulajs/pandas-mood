@@ -8,13 +8,25 @@ import registerServiceWorker from './registerServiceWorker';
 
 
 const authService = new AuthService();
-authService.autoLoginPopup({}).then(() => {
+
+authService.status({}).then(({ isLoggedIn }) => {
+  if (isLoggedIn) {
+    afterAuthDone();
+  } else {
+    authService.autoLoginPopup({}).then(() => {
+      afterAuthDone();
+    }).catch(err => console.warn('unable to log', err));
+  }
+});
+
+
+const afterAuthDone = () => {
   ReactDOM.render(
     // @ts-ignore
     <App/>,
     document.getElementById('root') as HTMLElement
   );
-}).catch(err => console.warn('unable to log', err));
+}
 
 
 registerServiceWorker();
