@@ -16,8 +16,7 @@
     "noImplicitAny": true,
     "importHelpers": true,
     "strictNullChecks": true,
-    "suppressImplicitAnyIndexErrors": true,
-    "noUnusedLocals": true
+    "suppressImplicitAnyIndexErrors": true
   },
   "exclude": [
     "node_modules",
@@ -28,6 +27,7 @@
     "jest",
     "src/setupTests.ts",
     "src/firebase.conf.js",
-    "src/default_firebase.conf.js"
+    "src/default_firebase.conf.js",
+    "src/index.tsx"
   ]
 }
