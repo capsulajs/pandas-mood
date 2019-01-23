@@ -1,11 +1,13 @@
-import { Tag } from './Tag';
+import { UserId } from './User';
 
 export interface Post {
-  authorId: string;
+  postId: number;
+  authorId: UserId;
   authorName: string;
-  time: number;
+  publicationTime: number;
   mood: number;
   message?: string;
-  tags?: Tag[];
+  tags?: string[];
   popularity: number;
+  relatedUsers: UserId[];
 }

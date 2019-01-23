@@ -1,7 +1,7 @@
 import { Post } from './Post';
 
 export interface ReportService {
-  report: (reportRequest: ReportRequest) => Promise<ReportResponse>
+  report: (reportRequest: ReportRequest) => Observable<ReportResponse>
 }
 
 interface ReportRequest {
