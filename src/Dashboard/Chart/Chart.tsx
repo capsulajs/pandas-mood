@@ -18,13 +18,12 @@ const data = {
   datasets: [{
     label: 'Mood',
     data: Array.from(Array(50).keys()).map(() => ({ x: day(), y: mood() })),
-    borderColor: '#2196f3',
-    backgroundColor: '#2196f3',
+    radius: 2
   }]
 }
 
 export default class Chart extends React.Component {
   public render() {
-    return (<Scatter data={data} options={options}/>)
+    return (<Scatter data={data} options={options}/>);
   }
 }

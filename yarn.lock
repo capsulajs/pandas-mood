@@ -246,6 +246,12 @@
     "@types/history" "*"
     "@types/react" "*"
 
+"@types/react-tagcloud@^1.1.4":
+  version "1.1.4"
+  resolved "https://registry.npmjs.org/@types/react-tagcloud/-/react-tagcloud-1.1.4.tgz#d7e74be999c202db551883449575890198d0681c"
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-transition-group@^2.0.8":
   version "2.0.15"
   resolved "https://registry.npmjs.org/@types/react-transition-group/-/react-transition-group-2.0.15.tgz#e5ee3fe558832e141cc6041bdd54caea7b787af8"
