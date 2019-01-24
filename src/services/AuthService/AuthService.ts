@@ -9,8 +9,7 @@ import AuthServiceDefinition, {
   StatusRequest,
   StatusResponse
 } from '../api/AuthService';
-import { Observable, from } from 'rxjs';
-import { fromObservable } from "rxjs/internal/observable/fromObservable";
+import { Observable } from 'rxjs';
 
 app.initializeApp(config);
 const provider = new firebase.auth.GoogleAuthProvider();
