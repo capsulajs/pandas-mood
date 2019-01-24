@@ -1,25 +1,18 @@
+import { Observable } from 'rxjs';
+
 export default interface AuthServiceDefinition {
-  autoLoginPopup(autoLoginPopup: AutoLoginPopupRequest): Promise<AutoLoginPopupResponse>,
+  autoLogin(autoLogin: AutoLoginRequest): Promise<AutoLoginResponse>,
 
-  getUser(getUserRequest: GetUserRequest): Promise<GetUserResponse>,
-
-  status(statusRequest: StatusRequest): Promise<StatusResponse>
+  status$(statusRequest: StatusRequest): Observable<StatusResponse>
 }
 
-export interface AutoLoginPopupRequest {
+export interface AutoLoginRequest {
 }
 
-export interface AutoLoginPopupResponse {
-  msg: string,
-  user?: object
-}
-
-export interface GetUserRequest {
-
-}
-
-export interface GetUserResponse {
-
+export interface AutoLoginResponse {
+  displayName: string,
+  email: string,
+  avatar: string
 }
 
 export interface StatusRequest {
@@ -27,5 +20,7 @@ export interface StatusRequest {
 }
 
 export interface StatusResponse {
-  isLoggedIn: boolean
+  isLoggedIn : boolean
 }
+
+

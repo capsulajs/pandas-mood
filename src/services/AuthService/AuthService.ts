@@ -4,13 +4,13 @@ import { config, uriPrams } from './firebase.conf';
 import app from 'firebase/app';
 
 import AuthServiceDefinition, {
-  AutoLoginPopupRequest,
-  AutoLoginPopupResponse,
-  GetUserRequest,
-  GetUserResponse,
+  AutoLoginRequest,
+  AutoLoginResponse,
   StatusRequest,
   StatusResponse
 } from '../api/AuthService';
+import { Observable, from } from 'rxjs';
+import { fromObservable } from "rxjs/internal/observable/fromObservable";
 
 app.initializeApp(config);
 const provider = new firebase.auth.GoogleAuthProvider();
@@ -21,7 +21,7 @@ export default class AuthService implements AuthServiceDefinition {
   private isLoggedIn: boolean = false;
   private userData: object = {};
 
-  public autoLoginPopup(autoLoginPopup: AutoLoginPopupRequest): Promise<AutoLoginPopupResponse> {
+  public autoLogin(autoLogin: AutoLoginRequest): Promise<AutoLoginResponse> {
     return new Promise((resolve, reject) => {
       auth.signInWithPopup(provider)
         .then(({ credential, user }) => {
@@ -29,31 +29,35 @@ export default class AuthService implements AuthServiceDefinition {
           if (user) {
             this.isLoggedIn = true;
             this.userData = user;
-            resolve({ msg: 'success', user });
+            resolve({
+              displayName: user.displayName || '',
+              email: user.email || '',
+              avatar: user.photoURL || ''
+            });
           } else {
-            reject({ msg: 'fail' })
+            reject({})
           }
         });
     });
   }
 
-  public getUser(getUserRequest: GetUserRequest): Promise<GetUserResponse> {
-    return new Promise((resolve, reject) => {
-      this.isLoggedIn ? resolve(this.userData) : reject({})
-    });
-  }
 
-  public status(statusRequest: StatusRequest): Promise<StatusResponse> {
-    return new Promise((resolve, reject) => {
-      auth.onAuthStateChanged((user) => {
+  public status$(statusRequest: StatusRequest): Observable<StatusResponse> {
+    return Observable.create((observer: any) => {
+
+      const subscription = auth.onAuthStateChanged((user) => {
         if (user) {
           this.isLoggedIn = true;
           this.userData = user;
-          resolve({ isLoggedIn: this.isLoggedIn })
-        } else {
-          resolve({ isLoggedIn: this.isLoggedIn })
         }
+
+        observer.next({ isLoggedIn: this.isLoggedIn });
+
       });
-    });
+      return () => {
+        subscription();
+      }
+    })
+
   }
 }

@@ -9,11 +9,14 @@ import registerServiceWorker from './registerServiceWorker';
 
 const authService = new AuthService();
 
-authService.status({}).then(({ isLoggedIn }) => {
+const subscription = authService.status$({});
+
+
+subscription.subscribe(({ isLoggedIn }) => {
   if (isLoggedIn) {
     afterAuthDone();
   } else {
-    authService.autoLoginPopup({}).then(() => {
+    authService.autoLogin({}).then(() => {
       afterAuthDone();
     }).catch(err => console.warn('unable to log', err));
   }
