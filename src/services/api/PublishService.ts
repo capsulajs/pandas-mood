@@ -1,4 +1,6 @@
 import { UserId } from './User';
+import { Mood } from './Mood';
+
 
 export interface PublishService {
   publish: (publishRequest: PublishRequest) => Promise<PublishResponse>
@@ -6,7 +8,7 @@ export interface PublishService {
 
 interface PublishRequest  {
   authorId: UserId;
-  mood: 0 | 1 | 2 | 3 | 4;
+  mood: Mood
   message?: string;
   tags?: string[];
   relatedUsers: UserId[];
