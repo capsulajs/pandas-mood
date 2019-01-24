@@ -1,6 +1,6 @@
 import * as moment from 'moment';
 
-export default {
+export default (posts: any) => ({
   responsive: true,
   maintainAspectRatio: false,
   legend: {
@@ -14,10 +14,14 @@ export default {
       tooltip.displayColors = false;
     },
     callbacks: {
-      label: () => 'Message: I\'m happy...#happy @victoria @michael',
-      title: () => 'Auth: Michael',
-      afterTitle: () => 'hh:mm dd.mm',
-      footer: () => '[start icon]: 4'
+      label: (data: any) => {
+        return `Message: ${posts[data.index].message}`;
+      },
+      title: (data: any) => {
+        return `Auth: ${posts[data[0].index].authorName}`;
+      },
+      afterTitle: (data: any) => moment(posts[data[0].index].publicationTime).format('DD/MM/YYYY'),
+      footer: (data: any) => `[start icon]: ${posts[data[0].index].mood}`
     }
   },
   scales: {
@@ -40,4 +44,4 @@ export default {
       }
     }]
   }
-};
+});
