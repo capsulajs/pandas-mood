@@ -5,10 +5,12 @@
 
 .chartContainer {
   height: 500px;
-  margin: 25px;
+  margin: 15px;
+  padding: 10px;
 }
 
 .tagsContainer {
   height: 75px;
-  margin: 25px;
+  margin: 15px;
+  padding: 10px;
 }
