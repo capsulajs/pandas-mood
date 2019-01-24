@@ -1,10 +1,10 @@
 // tslint disable
 // Initialize Firebase
 export const config = {
-  apiKey: "<API_KEY>",
-  authDomain: "<PROJECT_ID>.firebaseapp.com",
-  databaseURL: "https://<DATABASE_NAME>.firebaseio.com",
-  projectId: "<PROJECT_ID>",
-  storageBucket: "<BUCKET>.appspot.com",
-  messagingSenderId: "<SENDER_ID>",
+    apiKey: "AIzaSyD4Jo060p5wXVy8d12EjI1Bq7hFAaBwwO8",
+    authDomain: "panda-mood.firebaseapp.com",
+    databaseURL: "https://panda-mood.firebaseio.com",
+    projectId: "panda-mood",
+    storageBucket: "panda-mood.appspot.com",
+    messagingSenderId: "660205945236"
 };
