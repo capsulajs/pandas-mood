@@ -9,10 +9,12 @@ provider.setCustomParameters(uriPrams);
 
 const auth = firebase.auth();
 const postsRef = firebase.database().ref('/posts');
+const tagsRef = firebase.database().ref('/tags');
 
 export {
   provider,
   auth,
-  postsRef
+  postsRef,
+  tagsRef
 }
 

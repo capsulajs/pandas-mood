@@ -3,8 +3,10 @@ import SuggestionsServiceDefinition, {
   AnalyzeResponse,
   AutoCompleteRequest, AutoCompleteResponse
 } from '../api/SuggestionsService';
-import { Observable } from 'rxjs';
-import * as firebase from 'firebase';
+
+import { tagsRef } from '../utils/firebase';
+import { from, Observable } from 'rxjs';
+import { filter } from "rxjs/operators";
 
 export default class SuggestionsService implements SuggestionsServiceDefinition {
   public analyze$(analyze: Observable<AnalyzeRequest>): Observable<AnalyzeResponse> {
@@ -12,18 +14,20 @@ export default class SuggestionsService implements SuggestionsServiceDefinition 
   }
 
   public autoComplete$(autoComplete: AutoCompleteRequest): Observable<AutoCompleteResponse> {
-
-    const tagsRef = firebase.database().ref('/tags');
-
-
-    return Observable.create(observer => {
+    return Observable.create((observer: any) => {
       tagsRef.on('value', (tags) => {
         if (!tags) {
           observer.error('Unable to retrieve tag list');
         } else {
-          observer.next(tags.val());
+          const historyTags = autoComplete.text === '' ? [] : tags.val();
+
+          // from(historyTags).pipe(
+          //   filter((val: string) => val.includes(autoComplete.text))
+          // );
+
+          observer.next(historyTags);
         }
       });
-    })
+    });
   }
 }
