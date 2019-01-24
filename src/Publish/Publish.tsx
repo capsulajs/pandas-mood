@@ -9,7 +9,7 @@ class Publish extends React.Component {
       <div className="Publish">
         Form
           <Mood/>
-          <Message/ >
+          <Message/>
           Suggestion (tags)
           Suggestion (users)
           Submit
