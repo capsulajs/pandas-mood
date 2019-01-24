@@ -1,8 +1,3 @@
-import * as firebase from 'firebase';
-import { config, uriPrams } from './firebase.conf';
-// @ts-ignore
-import app from 'firebase/app';
-
 import AuthServiceDefinition, {
   AutoLoginRequest,
   AutoLoginResponse,
@@ -10,11 +5,8 @@ import AuthServiceDefinition, {
   StatusResponse
 } from '../api/AuthService';
 import { Observable } from 'rxjs';
+import {provider, auth} from '../utils/firebase';
 
-app.initializeApp(config);
-const provider = new firebase.auth.GoogleAuthProvider();
-provider.setCustomParameters(uriPrams);
-const auth = firebase.auth();
 
 export default class AuthService implements AuthServiceDefinition {
   private isLoggedIn: boolean = false;
