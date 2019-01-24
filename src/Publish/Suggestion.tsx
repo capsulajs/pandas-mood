@@ -13,7 +13,7 @@ class Suggestion extends React.Component<SuggestionProps, SuggestionState> {
   public render() {
     return (
       <div className="Suggestion">
-        { this.props.data.map(element => (<div onClick={this.props.handleClick(element)}>{element}</div>))}
+        { this.props.data.map(element => (<div key={element} onClick={this.props.handleClick(element)}>{element}</div>))}
       </div>
     );
   }

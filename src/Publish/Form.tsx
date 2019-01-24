@@ -3,6 +3,7 @@ import './Form.css';
 import Mood from './Mood';
 import { Mood as MoodType } from '../services/api/Mood';
 import Suggestion from './Suggestion';
+import Message from './Message';
 
 interface FormProps {
 }
@@ -26,7 +27,7 @@ class Form extends React.Component<FormProps, FormState> {
   };
 
 
-  public updateMessage = (message: string) => () => {
+  public updateMessage = (message: string) => {
     this.setState({ message })
   };
 
@@ -38,6 +39,9 @@ class Form extends React.Component<FormProps, FormState> {
     return (
       <div className="Form">
         <Mood selectMood={this.selectMood} selectedMood={this.state.mood}/>
+        <Message
+          message={this.state.message}
+          handleChange={this.updateMessage}/>
         <Suggestion
           data={['#tag1', '#tag2', '#tag3']}
           handleClick={this.appendToMsg}/>
