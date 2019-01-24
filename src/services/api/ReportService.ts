@@ -5,10 +5,10 @@ export interface ReportService {
   report: (reportRequest: ReportRequest) => Observable<ReportResponse>
 }
 
-interface ReportRequest {
+export interface ReportRequest {
   filterFn: (post: Post) => boolean;
 }
 
-interface ReportResponse {
-  posts: Post[];
+export interface ReportResponse {
+  post: Post;
 }
