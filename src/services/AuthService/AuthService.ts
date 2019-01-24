@@ -1,5 +1,5 @@
 import * as firebase from 'firebase';
-import { config, uriPrams } from './firebase.conf';
+import { config, uriPrams } from '../../firebase.conf';
 // @ts-ignore
 import app from 'firebase/app';
 
