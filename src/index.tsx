@@ -1,38 +1,37 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-// @ts-ignore
-import app from 'firebase/app';
-import * as firebase from 'firebase';
+
+import AuthService from './services/AuthService/AuthService';
+
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
-import { config } from './firebase.conf';
+import {HashRouter} from "react-router-dom";
 
-import { PublishService } from './services/publishService/PublishService';
 
-const email = 'arbib.michael@om2.com';
-const pass = 'mysuperpassword';
+const authService = new AuthService();
 
-app.initializeApp(config);
-firebase.auth().signInWithEmailAndPassword(email, pass).then(() => {
-    const service = new PublishService();
+const subscription = authService.status$({});
 
-    service.publish({
-      authorId: "panda2",
-      mood: 3,
-      message: "snow akaton",
-      tags: ["AKATON"],
-      relatedUsers: ["panda1"],
-    }).then(res => console.log(res))
-      .catch(err => console.log(err));
+
+subscription.subscribe(({ isLoggedIn }) => {
+  if (isLoggedIn) {
+    afterAuthDone();
+  } else {
+    authService.autoLogin({}).then(() => {
+      afterAuthDone();
+    }).catch(err => console.warn('unable to log', err));
   }
-).catch((e) => console.log('ko', e));
+});
 
 
-ReactDOM.render(
-  // @ts-ignore
-  <App/>,
-  document.getElementById('root') as HTMLElement
-);
+const afterAuthDone = () => {
+  ReactDOM.render(
+    <HashRouter>
+      <App />
+    </HashRouter>,
+    document.getElementById('root') as HTMLElement
+  );
+};
 
 
 registerServiceWorker();
