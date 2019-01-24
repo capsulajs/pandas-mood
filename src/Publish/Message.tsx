@@ -4,23 +4,47 @@ import { MentionsInput, Mention } from 'react-mentions'
 
 const persons = [
   {
-    id: 'Person1',
-    display: '@Person1',
+    id: 'sergiu',
+    display: '@sergiu',
   },
   {
-    id: 'Person2',
-    display: '@Person2',
+    id: 'stephane',
+    display: '@stephane',
+  },
+  {
+    id: 'irina',
+    display: '@irina',
+  },
+  {
+    id: 'victoria',
+    display: '@victoria',
+  },
+  {
+    id: 'anton',
+    display: '@anton',
+  },
+  {
+    id: 'misha',
+    display: '@misha',
   },
 ]
 
 const tags = [
   {
-    id: 'tag1',
-    display: '#tag1',
+    id: 'happy',
+    display: '#happy',
   },
   {
-    id: 'tag2',
-    display: '#tag2',
+    id: 'unhappy',
+    display: '#unhappy',
+  },
+  {
+    id: 'cicd',
+    display: '#cicd',
+  },
+  {
+    id: 'omg',
+    display: '#omg',
   },
 ]
 

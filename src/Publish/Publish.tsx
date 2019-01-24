@@ -9,8 +9,8 @@ class Publish extends React.Component {
       <div className="Publish">
         Account
         Form
-          <Message/ >
           <Mood/>
+          <Message/ >
           Suggestion (tags)
           Suggestion (users)
           Submit
