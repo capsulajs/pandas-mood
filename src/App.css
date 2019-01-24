@@ -1,37 +1,71 @@
 .App {
-  height: 100vh;
-  background-color: #eee;
+    height: 100vh;
+    background-color: #eee;
 }
 
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40px;
+    animation: App-logo-spin infinite 20s linear;
+    height: 40px;
 }
 
 .App-header {
-  background-color: #3c4f6d;
-  height: 40px;
-  padding: 5px;
-  color: white;
+    background-color: #3c4f6d;
+    height: 40px;
+    padding: 5px;
+    color: white;
 }
 
 .App-header a {
-  margin: 1em;
+    margin: 1em;
 }
 
 .App-header a:visited {
-  color: azure;
+    color: azure;
 }
 
 .App-title {
-  font-size: 1.5em;
+    font-size: 1.5em;
 }
 
 .App-intro {
-  font-size: large;
+    font-size: large;
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+.button-primary {
+    display: inline-block;
+    padding: 0.7em 1.4em;
+    margin: 0 0.3em 0.3em 0;
+    border-radius: 0.15em;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: #FFFFFF;
+    background-color: #3369ff;
+    box-shadow: inset 0 -0.6em 0 -0.35em rgba(0, 0, 0, 0.17);
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+}
+
+.button-primary:active {
+    top: 0.1em;
+}
+
+@media all and (max-width: 30em) {
+     .button-primary {
+        display: block;
+        margin: 0.4em auto;
+    }
 }
