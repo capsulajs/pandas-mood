@@ -7,8 +7,12 @@ export default class Dashboard extends React.Component {
   public render() {
     return (
       <div className="Dashboard">
-        <Chart />
-        <HashTags />
+        <div className="chartContainer shadow">
+          <Chart/>
+        </div>
+        <div className="tagsContainer shadow">
+          <HashTags/>
+        </div>
       </div>
     );
   }
