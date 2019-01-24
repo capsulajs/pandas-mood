@@ -1,17 +1,17 @@
 import { UserId } from './User';
-import { Mood } from './Mood';
 
-
-export interface PublishService {
+export default interface PublishServiceDefinition {
   publish: (publishRequest: PublishRequest) => Promise<PublishResponse>
 }
 
-interface PublishRequest  {
+export interface PublishRequest {
   authorId: UserId;
-  mood: Mood
+  mood: 0|1|2|3|4;
   message?: string;
   tags?: string[];
   relatedUsers: UserId[];
 }
 
-interface PublishResponse {}
+export interface PublishResponse {
+}
+
