@@ -1,6 +1,6 @@
 import * as React from 'react';
-import * as moment from 'moment';
 import { Scatter } from 'react-chartjs-2';
+import options from './options';
 
 const dates = [
   '01/01/2019',
@@ -22,43 +22,6 @@ const data = {
     backgroundColor: '#2196f3',
   }]
 }
-
-const options = {
-  responsive: true,
-  maintainAspectRatio: false,
-  legend: {
-    display: false
-  },
-  layout: {
-    padding: {
-      top: 25,
-      bottom: 25,
-      left: 25,
-      right: 25
-    }
-  },
-  tooltips: {
-    enabled: false
-  },
-  animation: {
-    duration: 1000
-  },
-  scales: {
-    xAxes: [{
-      ticks: {
-        callback: (value: any) => moment(value).format('DD MMM')
-      },
-      gridLines: {
-        display: false
-      }
-    }],
-    yAxes: [{
-      gridLines: {
-        display: false
-      }
-    }]
-  }
-};
 
 export default class Chart extends React.Component {
   public render() {
