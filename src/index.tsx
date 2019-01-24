@@ -29,14 +29,14 @@ const afterAuthDone = () => {
 
   const service = new PublishService();
 
-  service.publish({
-    authorId: "panda2",
-    mood: 3,
-    message: "snow akaton",
-    tags: ["AKATON"],
-    relatedUsers: ["panda1"],
-  }).then(res => console.log(res))
-    .catch(err => console.log(err));
+  // service.publish({
+  //   authorId: "panda2",
+  //   mood: 3,
+  //   message: "snow akaton",
+  //   tags: ["AKATON"],
+  //   relatedUsers: ["panda1"],
+  // }).then(res => console.log(res))
+  //   .catch(err => console.log(err));
 
   ReactDOM.render(
     <HashRouter>

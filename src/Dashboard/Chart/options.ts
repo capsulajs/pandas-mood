@@ -23,10 +23,7 @@ export default {
   scales: {
     xAxes: [{
       ticks: {
-        callback: (value: any) => {
-          console.log('value timestamp', value);
-          return moment(value).format('DD MMM');
-        }
+        callback: (value: any) => moment(value).format('DD MMM')
       },
       gridLines: {
         display: false

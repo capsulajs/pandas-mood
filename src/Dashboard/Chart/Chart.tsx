@@ -1,28 +1,11 @@
 import * as React from 'react';
 import { Scatter } from 'react-chartjs-2';
-import { getApproximationOfMoodData } from './utils';
+import { getLineData, getChartData } from './utils';
 import options from './options';
+import { ReportResponse } from '../../services/api/ReportService';
 import ReportService from '../../services/ReportService/ReportService';
 
 const reportService = new ReportService();
-
-const getChartData = (data: any) => ({
-  datasets: [
-    {
-      data,
-      label: 'Mood',
-      radius: 4
-    },
-    {
-      label: 'Line',
-      type: 'line',
-      tension: 0.2,
-      fill: false,
-      showLine: true,
-      data: getApproximationOfMoodData()
-    }
-  ]
-});
 
 export default class Chart extends React.Component {
   public state = {
@@ -31,7 +14,7 @@ export default class Chart extends React.Component {
   };
 
   public componentDidMount() {
-    reportService.report({ filterFn: () => true }).subscribe((postData: any) => {
+    reportService.report({ filterFn: () => true }).subscribe((postData: ReportResponse) => {
       const moodData = [
         ...this.state.moodData,
         {
@@ -39,7 +22,7 @@ export default class Chart extends React.Component {
           y: postData.post.mood
         }
       ];
-      const lineData = getApproximationOfMoodData(moodData);
+      const lineData = getLineData(moodData);
       this.setState({
         moodData,
         lineData
@@ -48,6 +31,6 @@ export default class Chart extends React.Component {
   }
 
   public render() {
-    return (<Scatter data={getChartData(this.state.moodData)} options={options}/>);
+    return (<Scatter data={getChartData(this.state.moodData, this.state.lineData)} options={options} />);
   }
 }
