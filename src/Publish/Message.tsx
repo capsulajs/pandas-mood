@@ -1,6 +1,7 @@
 import * as React from 'react';
 import './Message.css';
 import { MentionsInput, Mention } from 'react-mentions'
+import { Mood as MoodType } from '../services/api/Mood';
 
 const persons = [
   {
@@ -48,26 +49,23 @@ const tags = [
   },
 ]
 
-interface IMessage {
+interface MessageProps {
   message: string;
+  handleChange: (msg: string) => void
 }
 
-class Message extends React.Component<{}, IMessage> {
-  constructor(props: any){
-    super(props);
-    this.state = {
-      message: '',
-    };
-    this.handleChange = this.handleChange.bind(this);
-  }
+interface MessageState {
+}
+
+class Message extends React.Component<MessageProps, MessageState> {
 
   public render() {
     return (
       <div className="Message">
         <MentionsInput
           markup="@[__display__](__type__:__id__)"
-          value={this.state.message}
-          onChange={this.handleChange}>
+          value={this.props.message}
+          onChange={this.handleChangeEvent}>
           <Mention
             type="persons"
             trigger="@"
@@ -83,8 +81,8 @@ class Message extends React.Component<{}, IMessage> {
     );
   }
 
-  private handleChange(event: any) {
-    this.setState({ message: event.target.value, });
+  private handleChangeEvent = (event: any) => {
+    this.props.handleChange(event.target.value);
   }
 }
 
