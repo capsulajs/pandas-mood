@@ -1,29 +1,19 @@
-import * as React from 'react';
 import './HashTags.css';
+import * as React from 'react';
+import { TagCloud } from 'react-tagcloud';
 
-const TagCloud = require('react-tag-cloud');
-const randomColor = require('randomcolor');
+const data = [
+  { value: "JavaScript", count: 38 },
+  { value: "React", count: 30 },
+  { value: "Nodejs", count: 28 },
+  { value: "Express.js", count: 25 },
+  { value: "HTML5", count: 33 },
+  { value: "MongoDB", count: 18 },
+  { value: "CSS3", count: 20 }
+];
 
-class HashTags extends React.Component {
-    public render() {
-        return (
-            <TagCloud
-                style={{
-                    fontFamily: 'sans-serif',
-                    fontSize: 30,
-                    fontWeight: 'bold',
-                    fontStyle: 'italic',
-                    color: () => randomColor(),
-                    padding: 5,
-                    width: '100%',
-                    height: '100%'
-                }}>
-                <div style={{fontSize: 50}}>react</div>
-                <div style={{color: 'green'}}>tag</div>
-                <div rotate={90}>cloud</div>
-            </TagCloud>
-        );
-    }
+export default class HashTags extends React.Component {
+  public render() {
+    return <TagCloud minSize={12} maxSize={35} tags={data}/>;
+  }
 }
-
-export default HashTags;
