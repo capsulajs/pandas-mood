@@ -6,14 +6,6 @@ export default {
   legend: {
     display: false
   },
-  layout: {
-    padding: {
-      top: 5,
-      bottom: 5,
-      left: 5,
-      right: 5
-    }
-  },
   tooltips: {
     enabled: false,
     custom(tooltip: any) {
@@ -54,16 +46,20 @@ export default {
       if (tooltip.body) {
         const titleLines = tooltip.title || [];
         const bodyLines = tooltip.body.map(getBody);
-        let innerHtml = '<thead>';
+        let innerHtml = '<thead style="display: flex; flex-direction: row;">';
 
         titleLines.forEach((title: any) => {
+          console.log(title);
+
           innerHtml += '<tr><th>' + title + '</th></tr>';
         });
+
         innerHtml += '</thead><tbody>';
 
         bodyLines.forEach(function(body: any, i: any) {
           const colors = tooltip.labelColors[i];
           let style = 'background: #ccc';
+          style += '; width: 100px';
           style += '; border-color:' + colors.borderColor;
           style += '; border-width: 2px';
           const span = '<span style="' + style + '"></span>';
@@ -83,16 +79,16 @@ export default {
       el.style.position = 'absolute';
       el.style.left = position.left + window.pageXOffset + tooltip.caretX + 'px';
       el.style.top = position.top + window.pageYOffset + tooltip.caretY + 'px';
-      el.style.fontFamily = tooltip._bodyFontFamily;
-      el.style.fontSize = tooltip.bodyFontSize + 'px';
-      el.style.fontStyle = tooltip._bodyFontStyle;
+      // el.style.fontFamily = tooltip._bodyFontFamily;
+      // el.style.fontSize = tooltip.bodyFontSize + 'px';
+      // el.style.fontStyle = tooltip._bodyFontStyle;
       el.style.padding = tooltip.yPadding + 'px ' + tooltip.xPadding + 'px';
-      el.style.pointerEvents = 'none';
+      // el.style.pointerEvents = 'none';
     },
     callbacks: {
-      label: () => 'Message: Bla bla bla bla bla...',
-      title: () => 'Michael',
-      footer: () => 'Mood: 4'
+      label: () => 'Message: I\'m happy...#happy @victoria @michael',
+      title: () => 'Auth: Michael  hh:mm dd.mm',
+      footer: () => '[start icon]: 4'
     }
   },
   scales: {
