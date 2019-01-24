@@ -1,13 +1,18 @@
-.MoodItem img {
-    margin: 10px;
-    width: 100px;
-    height: 100px;
-}
+/*.MoodItem img {*/
+    /*margin: 10px;*/
+    /*width: 100px;*/
+    /*height: 100px;*/
+/*}*/
 
 .MoodItem {
-  display: inline-block;
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    margin: 20px;
+    border-radius: 100px;
+    opacity: 0.4;
 }
 
 .MoodItem.selected {
-    border: 1px solid black;
+    opacity: 1;
 }

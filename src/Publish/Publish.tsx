@@ -6,7 +6,6 @@ class Publish extends React.Component {
   public render() {
     return (
       <div className="Publish">
-        Account
         Form
           <Mood/>
           Message
