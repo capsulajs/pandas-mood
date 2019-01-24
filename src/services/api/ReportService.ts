@@ -10,5 +10,5 @@ export interface ReportRequest {
 }
 
 export interface ReportResponse {
-  posts: Post[];
+  post: Post;
 }
