@@ -1,0 +1,10 @@
+.Message {
+    margin: auto;
+    width: 60%;
+    margin-top: 2em;
+    margin-bottom: 5em;
+}
+
+.Message textarea {
+    height: 6em !important;
+}
