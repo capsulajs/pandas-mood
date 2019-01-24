@@ -29,7 +29,12 @@ Scenario: ReportRequest method calls for and NOT receiving a valid response from
   Then    an appropriate error message will be received
 
 # ReportRequest method calls for and receiving a response with an unknown/invalid 'mood' value
-
+Scenario: ReportRequest method calls for and receiving a valid response with an unknown 'mood' value
+  Given   ReportService with Report RequestService
+  And     ReportResponse subscription
+  When    ReportRequest calls ReportResponse
+  And     response received includes an unknown 'mood' value 99999
+  Then    a relevant error will be received
 
 # ReportRequest method calls for a response, the subscription is closed unexpectedly
 
