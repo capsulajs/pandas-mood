@@ -18,7 +18,7 @@ const data = {
   datasets: [{
     label: 'Mood',
     data: Array.from(Array(50).keys()).map(() => ({ x: day(), y: mood() })),
-    radius: 2
+    radius: 4
   }]
 }
 
