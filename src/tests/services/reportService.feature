@@ -21,7 +21,12 @@ Scenario: ReportRequest method calls for and receiving a valid response from Rep
   |relatedUsers     |
 
 # ReportRequest method calls for and NOT receiving a response
-
+Scenario: ReportRequest method calls for and NOT receiving a valid response from ReportResponse subscription
+  Given   ReportService with Report RequestService
+  And     ReportResponse subscription is not available
+  When    ReportRequest calls ReportResponse
+  And     no response is received
+  Then    an appropriate error message will be received
 
 # ReportRequest method calls for and receiving a response with an unknown/invalid 'mood' value
 
