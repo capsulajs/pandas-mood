@@ -4,10 +4,10 @@ import './App.css';
 import logo from './logo.svg';
 import Home from './Home';
 import Publish from './Publish/Publish';
+import Dashboard from './Dashboard/Dashboard';
 
 // TODO: use components after they will be created
 const Login = () => <div>Login</div>;
-const Dashboard = () => <div>Dashboard</div>;
 
 class App extends React.Component {
   public render() {
@@ -21,7 +21,7 @@ class App extends React.Component {
           <Link to="/dashboard">Dashboard</Link>
         </header>
         <div className="Content">
-          <Route path="/" component={Home}/>
+          <Route exact={true} path="/" component={Home}/>
           <Route path="/login" component={Login}/>
           <Route path="/publish" component={Publish}/>
           <Route path="/dashboard" component={Dashboard}/>
