@@ -21,7 +21,6 @@ class Form extends React.Component<FormProps, FormState> {
     };
   }
 
-
   public selectMood = (mood: MoodType) => () => {
     this.setState({ mood })
   };
@@ -31,7 +30,7 @@ class Form extends React.Component<FormProps, FormState> {
     this.setState({ message })
   };
 
-  public addTag = (tag: string) => () =>{
+  public appendToMsg = (tag: string) => () =>{
     this.updateMessage(this.state.message + ' ' + tag)
   };
 
@@ -40,10 +39,11 @@ class Form extends React.Component<FormProps, FormState> {
       <div className="Form">
         <Mood selectMood={this.selectMood} selectedMood={this.state.mood}/>
         <Suggestion
-          data={['word1', 'word2', 'word3']}
-          handleClick={this.addTag}/>
-        Suggestion (tags)
-        Suggestion (users)
+          data={['#tag1', '#tag2', '#tag3']}
+          handleClick={this.appendToMsg}/>
+        <Suggestion
+          data={['#sergiu', '@stephane', '@idan']}
+          handleClick={this.appendToMsg}/>
         <a className="button-primary">Publish</a>
       </div>
     );
