@@ -4,4 +4,4 @@ dist
 node_modules/
 bundles/
 dist/
-src/services/utils/firebase.conf.ts
+firebase.conf.ts
