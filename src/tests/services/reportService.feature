@@ -36,7 +36,37 @@ Scenario: ReportRequest method calls for and receiving a valid response with an 
   And     response received includes an unknown 'mood' value 99999
   Then    a relevant error will be received
 
-# ReportRequest method calls for a response, the subscription is closed unexpectedly
+Scenario: ReportRequest method calls for and receiving a valid response with an invalid 'mood' value
+  Given   ReportService with Report RequestService
+  And     ReportResponse subscription
+  When    ReportRequest calls ReportResponse
+  And     response received includes an invalid 'mood' value 'Dmitri'
+  Then    a relevant error will be received
 
+# ReportRequest method calls for a response, the subscription is closed unexpectedly
+Scenario: ReportRequest method calls for a response, the subscription is closed before a response is received
+  Given   ReportService with Report RequestService
+  And     ReportResponse subscription
+  When    ReportRequest calls ReportResponse
+  And     subscription is terminated
+  Then    a relevant error will be received
+  And     user is taken back to login
 
 # ReportRequest method calls for a response, the response includes multiple relatedUsers with an unknown/invalid UserId
+Scenario: ReportRequest method calls for and receiving a valid response including multiple relatedUsers with ONE unknown UserId value
+  Given   ReportService with Report RequestService
+  And     ReportResponse subscription
+  When    ReportRequest calls ReportResponse
+  And     response received includes an unknown 'UserId' value 99999
+  Then    relatedUsers list will be received
+  And     unknown UserId is ignored
+  And     a relevant error will be received
+
+Scenario: ReportRequest method calls for and receiving a valid response including multiple relatedUsers with ONE invalid UserId value
+Given   ReportService with Report RequestService
+And     ReportResponse subscription
+When    ReportRequest calls ReportResponse
+And     response received includes an invalid 'UserId' value 'Dmitri'
+Then    relatedUsers list will be received
+And     invalid UserId is ignored
+And     a relevant error will be received
