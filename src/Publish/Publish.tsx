@@ -1,6 +1,7 @@
 import * as React from 'react';
 import './Publish.css';
 import Message from './Message';
+import Mood from './Mood';
 
 class Publish extends React.Component {
   public render() {
@@ -8,8 +9,8 @@ class Publish extends React.Component {
       <div className="Publish">
         Account
         Form
-          Mood
           <Message/ >
+          <Mood/>
           Suggestion (tags)
           Suggestion (users)
           Submit
