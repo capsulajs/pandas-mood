@@ -1,7 +1,7 @@
 import PublishServiceDefinition, { PublishRequest, PublishResponse } from '../api/PublishServiceDefinition'; // tslint:disable-line
 import * as firebase from 'firebase';
 
-export class PublishService implements PublishServiceDefinition {
+export default class PublishService implements PublishServiceDefinition {
   public publish(publishRequest: PublishRequest): Promise<PublishResponse> {
 
     const requestEnrichment = {
