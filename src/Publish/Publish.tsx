@@ -1,5 +1,6 @@
 import * as React from 'react';
 import './Publish.css';
+import Message from './Message';
 import Mood from './Mood';
 
 class Publish extends React.Component {
@@ -8,7 +9,7 @@ class Publish extends React.Component {
       <div className="Publish">
         Form
           <Mood/>
-          Message
+          <Message/>
           Suggestion (tags)
           Suggestion (users)
           Submit
