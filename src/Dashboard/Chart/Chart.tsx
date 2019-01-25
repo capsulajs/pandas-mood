@@ -16,18 +16,19 @@ export default class Chart extends React.Component {
 
   public componentDidMount() {
     reportService.report({ filterFn: () => true }).subscribe((postData: ReportResponse) => {
+      const { post } = postData;
       const scatterData = [
         ...this.state.scatterData,
         {
-          x: new Date(postData.post.publicationTime),
-          y: postData.post.mood
+          x: new Date(post.publicationTime),
+          y: post.mood
         }
       ];
       const lineData = getLineData(scatterData);
       this.setState({
-        posts: [...this.state.posts, postData.post],
         scatterData,
-        lineData
+        lineData,
+        posts: [...this.state.posts, post],
       });
     })
   }
