@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Scatter } from 'react-chartjs-2';
 import { getLineData, getChartData } from './utils';
-import createOptions from './options';
+import getOptions from './options';
 import { ReportResponse } from '../../services/api/ReportService';
 import ReportService from '../../services/ReportService/ReportService';
 
@@ -15,8 +15,8 @@ export default class Chart extends React.Component {
   };
 
   public componentDidMount() {
-    reportService.report({ filterFn: () => true }).subscribe((postData: ReportResponse) => {
-      const { post } = postData;
+    reportService.report({ filterFn: () => true }).subscribe((data: ReportResponse) => {
+      const { post } = data;
       const scatterData = [
         ...this.state.scatterData,
         {
@@ -37,7 +37,7 @@ export default class Chart extends React.Component {
     return (
       <Scatter
         data={getChartData(this.state.scatterData, this.state.lineData)}
-        options={createOptions(this.state.posts)}
+        options={getOptions(this.state.posts)}
       />
     );
   }
