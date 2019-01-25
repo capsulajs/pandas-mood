@@ -9,24 +9,24 @@ const reportService = new ReportService();
 
 export default class Chart extends React.Component {
   public state = {
-    moodData: [],
+    scatterData: [],
     lineData: [],
     posts: []
   };
 
   public componentDidMount() {
     reportService.report({ filterFn: () => true }).subscribe((postData: ReportResponse) => {
-      const moodData = [
-        ...this.state.moodData,
+      const scatterData = [
+        ...this.state.scatterData,
         {
           x: new Date(postData.post.publicationTime),
           y: postData.post.mood
         }
       ];
-      const lineData = getLineData(moodData);
+      const lineData = getLineData(scatterData);
       this.setState({
         posts: [...this.state.posts, postData.post],
-        moodData,
+        scatterData,
         lineData
       });
     })
@@ -35,7 +35,7 @@ export default class Chart extends React.Component {
   public render() {
     return (
       <Scatter
-        data={getChartData(this.state.moodData, this.state.lineData)}
+        data={getChartData(this.state.scatterData, this.state.lineData)}
         options={createOptions(this.state.posts)}
       />
     );
