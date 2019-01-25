@@ -1,7 +1,7 @@
 # Panda Mood
 The retrospective helper that you looked for !
 
-Working with Firebase
+Working with Firebase.
 
 ## Configuration
 First create a `firebase.conf.ts` file in `src/services/AuthService`.
