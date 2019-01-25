@@ -1,6 +1,11 @@
 import './HashTags.css';
 import * as React from 'react';
 import { TagCloud } from 'react-tagcloud';
+import { data as dataReceive } from '../../__mocks__/reports.json';
+
+dataReceive.map((values, index) => {
+console.log(values)
+});
 
 const data = [
   { value: "JavaScript", count: 38 },
@@ -14,6 +19,9 @@ const data = [
 
 export default class HashTags extends React.Component {
   public render() {
-    return <TagCloud minSize={12} maxSize={35} tags={data}/>;
+    // console.log('data', dataReceive);
+    return (
+        <TagCloud minSize={12} maxSize={35} tags={data}/>
+    );
   }
 }

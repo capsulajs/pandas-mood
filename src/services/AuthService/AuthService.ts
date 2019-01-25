@@ -14,7 +14,7 @@ export default class AuthService implements AuthServiceDefinition {
 
   public autoLogin(autoLogin: AutoLoginRequest): Promise<AutoLoginResponse> {
     return new Promise((resolve, reject) => {
-      auth.signInWithPopup(provider)
+      auth.signInWithRedirect(provider)
         .then(({ credential, user }) => {
 
           if (user) {
