@@ -4,7 +4,6 @@ import { TagCloud } from 'react-tagcloud';
 import { data as dataReceive } from '../../__mocks__/reports.json';
 import { ReportResponse } from '../../services/api/ReportService';
 import ReportService from '../../services/ReportService/ReportService';
-import {getLineData} from "../Chart/utils";
 
 const reportService = new ReportService();
 
@@ -37,7 +36,8 @@ export default class HashTags extends React.Component {
     }
 
   public render() {
-    console.log('data', this.state.posts);
+    const { posts } = this.state;
+    console.log('posts', posts);
     return (
         <TagCloud minSize={12} maxSize={35} tags={data}/>
     );
