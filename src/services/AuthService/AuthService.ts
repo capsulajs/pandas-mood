@@ -7,7 +7,6 @@ import AuthServiceDefinition, {
 import { Observable } from 'rxjs';
 import {provider, auth} from '../utils/firebase';
 
-
 export default class AuthService implements AuthServiceDefinition {
   private isLoggedIn: boolean = false;
   private userData: object = {};
