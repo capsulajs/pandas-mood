@@ -5,8 +5,6 @@ import createOptions from './options';
 import { ReportResponse } from '../../services/api/ReportService';
 import ReportService from '../../services/ReportService/ReportService';
 
-const reportService = new ReportService();
-
 export default class Chart extends React.Component {
   public state = {
     scatterData: [],
@@ -15,6 +13,7 @@ export default class Chart extends React.Component {
   };
 
   public componentDidMount() {
+    const reportService = new ReportService();
     reportService.report({ filterFn: () => true }).subscribe((postData: ReportResponse) => {
       const { post } = postData;
       const scatterData = [
