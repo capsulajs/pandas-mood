@@ -1,29 +1,44 @@
 import * as React from 'react';
 import { Scatter } from 'react-chartjs-2';
-import options from './options';
+import { getLineData, getChartData } from './utils';
+import createOptions from './options';
+import { ReportResponse } from '../../services/api/ReportService';
+import ReportService from '../../services/ReportService/ReportService';
 
-const dates = [
-  '01/01/2019',
-  '02/01/2019',
-  '03/01/2019',
-  '04/01/2019',
-  '05/01/2019',
-  '06/01/2019',
-  '07/01/2019'
-].map(i => new Date(i));
-
-const day = () => dates[Math.round(Math.random() * dates.length)];
-const mood = () => Math.round(Math.random() * 4);
-const data = {
-  datasets: [{
-    label: 'Mood',
-    data: Array.from(Array(50).keys()).map(() => ({ x: day(), y: mood() })),
-    radius: 4
-  }]
-}
+const reportService = new ReportService();
 
 export default class Chart extends React.Component {
+  public state = {
+    scatterData: [],
+    lineData: [],
+    posts: []
+  };
+
+  public componentDidMount() {
+    reportService.report({ filterFn: () => true }).subscribe((postData: ReportResponse) => {
+      const { post } = postData;
+      const scatterData = [
+        ...this.state.scatterData,
+        {
+          x: new Date(post.publicationTime),
+          y: post.mood
+        }
+      ];
+      const lineData = getLineData(scatterData);
+      this.setState({
+        scatterData,
+        lineData,
+        posts: [...this.state.posts, post],
+      });
+    })
+  }
+
   public render() {
-    return (<Scatter data={data} options={options}/>);
+    return (
+      <Scatter
+        data={getChartData(this.state.scatterData, this.state.lineData)}
+        options={createOptions(this.state.posts)}
+      />
+    );
   }
 }
