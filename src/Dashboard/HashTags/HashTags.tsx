@@ -1,6 +1,15 @@
 import './HashTags.css';
 import * as React from 'react';
 import { TagCloud } from 'react-tagcloud';
+import { data as dataReceive } from '../../__mocks__/reports.json';
+import { ReportResponse } from '../../services/api/ReportService';
+import ReportService from '../../services/ReportService/ReportService';
+
+const reportService = new ReportService();
+
+dataReceive.map((values, index) => {
+console.log(values)
+});
 
 const data = [
   { value: "JavaScript", count: 38 },
@@ -13,7 +22,24 @@ const data = [
 ];
 
 export default class HashTags extends React.Component {
+    public state = {
+        posts: []
+    };
+
+    public componentDidMount() {
+        reportService.report({ filterFn: () => true }).subscribe((postData: ReportResponse) => {
+            const { post } = postData;
+            this.setState({
+                posts: [...this.state.posts, post],
+            });
+        })
+    }
+
   public render() {
-    return <TagCloud minSize={12} maxSize={35} tags={data}/>;
+    const { posts } = this.state;
+    console.log('posts', posts);
+    return (
+        <TagCloud minSize={12} maxSize={35} tags={data}/>
+    );
   }
 }

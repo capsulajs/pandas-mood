@@ -1,4 +1,4 @@
-[
+export const data = [
   {
     "postId": 0,
     "authorId": 1,
