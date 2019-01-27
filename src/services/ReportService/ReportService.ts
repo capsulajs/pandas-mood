@@ -7,24 +7,29 @@ import {
   ReportResponse,
 } from '../api/ReportService';
 import { Posts } from '../api/Posts';
-import { postsRef } from '../utils/firebase'
+import { getFirebaseItem } from '../utils/firebase'
 
 export default class ReportService implements ReportServiceInterface {
-  public posts$: Observable<Posts>;
+  private posts$: Observable<Posts>;
+  private postsRef: any;
+
+  constructor() {
+    this.postsRef = getFirebaseItem('postsRef');
+  }
 
   public report(reportRequest: ReportRequest): Observable<ReportResponse> {
     let isInitialEmit: boolean = true;
     if (!this.posts$) {
       this.posts$ = Observable
         .create((observer: any) => {
-          postsRef.on('value', (snapshot: any) => {
+          this.postsRef.on('value', (snapshot: any) => {
             const postsMap = snapshot.val();
             const posts = Object.keys(postsMap).map(hash => postsMap[hash]);
             observer.next({ posts });
           });
 
           return () => {
-            postsRef.off('value');
+            this.postsRef.off('value');
           }
       })
         .pipe(

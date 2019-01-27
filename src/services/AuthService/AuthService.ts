@@ -5,17 +5,24 @@ import AuthServiceDefinition, {
   StatusResponse
 } from '../api/AuthService';
 import { Observable } from 'rxjs';
-import {provider, auth} from '../utils/firebase';
+import { getFirebaseItem } from '../utils/firebase';
 
 export default class AuthService implements AuthServiceDefinition {
   private isLoggedIn: boolean = false;
   private userData: object = {};
+  private auth: any;
+  private provider: any;
+
+  constructor() {
+    this.auth = getFirebaseItem('auth');
+    this.provider = getFirebaseItem('provider');
+  }
 
   public autoLogin(autoLogin: AutoLoginRequest): Promise<AutoLoginResponse> {
     return new Promise((resolve, reject) => {
-      auth.signInWithPopup(provider)
-        .then(({ credential, user }) => {
-
+      this.auth.signInWithPopup(this.provider)
+        .then((authData: any) => {
+          const { user }: any = authData;
           if (user) {
             this.isLoggedIn = true;
             this.userData = user;
@@ -35,7 +42,7 @@ export default class AuthService implements AuthServiceDefinition {
   public status$(statusRequest: StatusRequest): Observable<StatusResponse> {
     return Observable.create((observer: any) => {
 
-      const subscription = auth.onAuthStateChanged((user) => {
+      const subscription = this.auth.onAuthStateChanged((user: any) => {
         if (user) {
           this.isLoggedIn = true;
           this.userData = user;
